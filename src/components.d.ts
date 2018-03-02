@@ -18,6 +18,36 @@ declare global {
 
 
 import {
+  AppHeader as AppHeader
+} from './components/app-header/app-header';
+
+declare global {
+  interface HTMLAppHeaderElement extends AppHeader, HTMLStencilElement {
+  }
+  var HTMLAppHeaderElement: {
+    prototype: HTMLAppHeaderElement;
+    new (): HTMLAppHeaderElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-header": HTMLAppHeaderElement;
+  }
+  interface ElementTagNameMap {
+    "app-header": HTMLAppHeaderElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-header": JSXElements.AppHeaderAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppHeaderAttributes extends HTMLAttributes {
+      title?: string;
+    }
+  }
+}
+
+
+import {
   AppHome as AppHome
 } from './components/app-home/app-home';
 
@@ -41,7 +71,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-      
+      match?: MatchResults;
     }
   }
 }
@@ -78,6 +108,66 @@ declare global {
 
 
 import {
+  CryptobuddyApp as CryptobuddyApp
+} from './components/cryptobuddy-app/cryptobuddy-app';
+
+declare global {
+  interface HTMLCryptobuddyAppElement extends CryptobuddyApp, HTMLStencilElement {
+  }
+  var HTMLCryptobuddyAppElement: {
+    prototype: HTMLCryptobuddyAppElement;
+    new (): HTMLCryptobuddyAppElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cryptobuddy-app": HTMLCryptobuddyAppElement;
+  }
+  interface ElementTagNameMap {
+    "cryptobuddy-app": HTMLCryptobuddyAppElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cryptobuddy-app": JSXElements.CryptobuddyAppAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CryptobuddyAppAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  Exchanges as ExchangesView
+} from './components/exchanges/exchanges';
+
+declare global {
+  interface HTMLExchangesViewElement extends ExchangesView, HTMLStencilElement {
+  }
+  var HTMLExchangesViewElement: {
+    prototype: HTMLExchangesViewElement;
+    new (): HTMLExchangesViewElement;
+  };
+  interface HTMLElementTagNameMap {
+    "exchanges-view": HTMLExchangesViewElement;
+  }
+  interface ElementTagNameMap {
+    "exchanges-view": HTMLExchangesViewElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "exchanges-view": JSXElements.ExchangesViewAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExchangesViewAttributes extends HTMLAttributes {
+      match?: MatchResults;
+    }
+  }
+}
+
+
+import {
   LazyImg as LazyImg
 } from './components/lazy-img/lazy-img';
 
@@ -103,36 +193,6 @@ declare global {
     export interface LazyImgAttributes extends HTMLAttributes {
       alt?: string;
       src?: string;
-    }
-  }
-}
-
-
-import {
-  MyApp as MyApp
-} from './components/my-app/my-app';
-
-declare global {
-  interface HTMLMyAppElement extends MyApp, HTMLStencilElement {
-  }
-  var HTMLMyAppElement: {
-    prototype: HTMLMyAppElement;
-    new (): HTMLMyAppElement;
-  };
-  interface HTMLElementTagNameMap {
-    "my-app": HTMLMyAppElement;
-  }
-  interface ElementTagNameMap {
-    "my-app": HTMLMyAppElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "my-app": JSXElements.MyAppAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface MyAppAttributes extends HTMLAttributes {
-      
     }
   }
 }
