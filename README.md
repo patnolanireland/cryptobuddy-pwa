@@ -1,6 +1,7 @@
-# Ionic PWA Toolkit Beta
+# Cryptobuddy PWA
 
-The Ionic PWA Toolkit is the recommended way to build production ready Progressive Web Apps (PWAs) with Ionic. This toolkit gets you started with [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+). This combination of tools gives you the ability to build a fast, efficient PWA with zero config needed and best practices out of the box.
+The following project is build from the [Ionic PWA Toolkit Beta](https://github.com/ionic-team/ionic-pwa-toolkit) which
+leverages [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+).
 
 ***Note: This project is a beta and uses an early release of Ionic 4.***
 
@@ -22,19 +23,11 @@ The Ionic PWA Toolkit is the recommended way to build production ready Progressi
 
 ## Getting Started
 
-To start building a PWA with the Ionic PWA Toolkit, clone this repo to a new directory:
+It's very simple to get developing just do:
 
 ```bash
-git clone https://github.com/ionic-team/ionic-pwa-toolkit.git my-pwa
-cd my-pwa
-git remote rm origin
-```
-
-and run:
-
-```bash
-npm install
-npm start
+yarn 
+yarn start
 ```
 
 ## Production
@@ -42,12 +35,90 @@ npm start
 To build your PWA for production, run:
 
 ```bash
-npm run build
+yarn build
 ```
 A production build includes everything needed for your project to be a PWA right out of the box. This includes both a Web Manifest (src/manifest.json) and a Service Worker (www/sw.js).
 
+## Docker
 
-## Hosting
+The project has two Dockerfiles, the primary is based off the Node image and the slimmer `Dockerfile.alpine` uses the
+node alpine variant.
+
+Docker can be used for development but it's not really necessary.  If desired use **Docker Compose** as follows:
+
+```
+docker-compose -f docker-compose.debug.yml up --build
+```
+
+The real advantage is when we deploy to Heroku.  An alternative deployment strategy can be observed below from the original 
+Ionic/Stencil docs which suggest Firebase. Firebase aught be more performant as it has H2 push which Heroku doesn't support 
+just yet.
+
+## Heroku Deployment
+
+Heroku now allows deployment of Docker containers.
+
+### Initial Setup
+
+1. Ensure that you're logged in via the `heroku-cli`
+
+```
+heroku login
+```
+
+2. Login in to the Heroku Docker Registry via the cli
+
+```
+heroku container:login
+```
+
+3. Create a Heroku app.  The following name will be taken if you are cloning this repo so choose another or let heroku
+   auto generate with `heroku create`.
+
+```
+heroku apps:create cryptobuddy-pwa
+```
+
+4.  Build the docker image, the Alpine image is smaller and thus quicker to upload and works perfectly for the current
+    requirements.
+
+```
+docker build -f Dockerfile.alpine -t cryptobuddy-pwa .
+```
+
+5.  Use `docker tag` to label our build so Heroku can understand.
+
+```
+docker tag cryptobuddy-pwa:latest registry.heroku.com/cryptobuddy-pwa/web
+```
+
+6.  Now we can use `docker push` to upload the build.
+
+```
+docker push registry.heroku.com/cryptobuddy-pwa/web
+```
+
+7. Optionally you can open the Heroku website and see the PWA in all it's glory.  The following command opens the app in
+   your default browser.
+
+```
+heroku open -a cryptobuddy-pwa
+```
+
+### Subsequent Build and Update Process
+
+Once the app has been created and deployed for the first time develop some more and when comfortable to push observe the
+following three step process.
+
+```
+docker build -f Dockerfile.alpine -t cryptobuddy-pwa .
+
+docker tag cryptobuddy-pwa:latest registry.heroku.com/cryptobuddy-pwa/web
+
+docker push registry.heroku.com/cryptobuddy-pwa/web
+```
+
+## Alternative Hosting - Firebase
 
 For top PWA performance, your app should be hosted with a hosting provider that supports HTTPS and HTTP2 out of the box.
 
@@ -72,7 +143,7 @@ For info on how Service Workers work in Stencil check out our [Service Worker do
 
 In some cases, for instance when you are working on adding [web push notifications](https://developers.google.com/web/fundamentals/push-notifications/) or [background sync](https://developers.google.com/web/updates/2015/12/background-sync), both which require a Service Worker, it can be handy to be able to dev builds with a service worker.
 
-To do this with the Ionic PWA toolkit simply run `npm run devWithSW`. This will start a dev build, but with the Service Worker also getting livereloaded.
+To do this with the Ionic PWA toolkit simply run `yarn devWithSW`. This will start a dev build, but with the Service Worker also getting livereloaded.
 
 ## Lazy Loading Images
 
@@ -83,13 +154,13 @@ Check out the `lazy-img` component in `src/components/lazy-img/lazy-img.tsx`.
 To run the unit tests once, run:
 
 ```
-npm test
+yarn test
 ```
 
 To run the unit tests and watch for file changes during development, run:
 
 ```
-npm run test.watch
+yarn test.watch
 ```
 
 ## Testing your PWA's performance
