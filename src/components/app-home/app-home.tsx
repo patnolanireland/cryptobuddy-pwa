@@ -1,7 +1,5 @@
 import { Component } from '@stencil/core';
 
-import config from '../../config/active-config.json';
-
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.scss'
@@ -9,30 +7,25 @@ import config from '../../config/active-config.json';
 export class AppHome {
 
   render() {
-    return (
+    return [
       <ion-page>
         <ion-header>
           <ion-toolbar color='primary'>
             <ion-title>Ionic PWA Toolkit</ion-title>
           </ion-toolbar>
         </ion-header>
-
         <ion-content>
-          <p>
-            Welcome to the Ionic PWA Toolkit.
-            You can use this starter to build entire PWAs all with
-            web components using Stencil and ionic/core! Check out the readme for everything that comes in this starter out of the box and
-            Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
-          </p>
-
-          <stencil-route-link url='/profile/stencil'>
-            <ion-button>
-              Profile page
-            </ion-button>
-          </stencil-route-link>
-          <p>The API for Cryptobuddy is accessible at { config.ApiEndpoints.cryptobuddy }</p>
+          <img alt="Cryptobuddy Logo of stock chart" src="assets/logo.svg" />
+          <p text-center>Your trading mate for Cryptocurrency</p>
+          <div text-center>
+            <stencil-route-link url='/profile/stencil'>
+              <ion-button>
+                Enter
+              </ion-button>
+            </stencil-route-link>
+          </div>
         </ion-content>
       </ion-page>
-    );
+    ];
   }
 }
