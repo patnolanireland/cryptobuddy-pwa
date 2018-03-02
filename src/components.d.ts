@@ -78,36 +78,6 @@ declare global {
 
 
 import {
-  AppMenuContent as AppMenuContent
-} from './components/app-menu-content/app-menu-content';
-
-declare global {
-  interface HTMLAppMenuContentElement extends AppMenuContent, HTMLStencilElement {
-  }
-  var HTMLAppMenuContentElement: {
-    prototype: HTMLAppMenuContentElement;
-    new (): HTMLAppMenuContentElement;
-  };
-  interface HTMLElementTagNameMap {
-    "app-menu-content": HTMLAppMenuContentElement;
-  }
-  interface ElementTagNameMap {
-    "app-menu-content": HTMLAppMenuContentElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "app-menu-content": JSXElements.AppMenuContentAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface AppMenuContentAttributes extends HTMLAttributes {
-      title?: string;
-    }
-  }
-}
-
-
-import {
   AppProfile as AppProfile
 } from './components/app-profile/app-profile';
 
