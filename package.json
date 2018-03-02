@@ -1,8 +1,8 @@
 {
-  "name": "@stencil/starter",
+  "name": "cryptobuddy-pwa",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "description": "Cryptobuddy PWA - A Progressive Web App to trade cryptocurrency on popular exchanges",
   "files": [
     "dist/"
   ],
@@ -29,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+    "url": "git+https://github.com/patnolanireland/cryptobuddy-pwa"
   },
-  "author": "Ionic Team",
+  "author": "Patrick Nolan - Delta Ready Technology Pty Ltd",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/patnolanireland/cryptobuddy-pwa"
   },
-  "homepage": "https://github.com/ionic-team/stencil",
+  "homepage": "https://github.com/patnolanireland/cryptobuddy-pwa",
   "jest": {
     "transform": {
       "^.+\\.(js|ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
