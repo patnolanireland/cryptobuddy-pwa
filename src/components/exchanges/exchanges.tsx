@@ -6,10 +6,10 @@ import { IView } from '../../model';
 import { activateView } from '../../actions/view';
 
 @Component({
-  tag: 'app-home',
-  styleUrl: 'app-home.scss'
+  tag: 'exchanges-view',
+  styleUrl: 'exchanges.scss'
 })
-export class AppHome {
+export class Exchanges {
 
   @Prop({ context: 'store' }) store: Store;
 
@@ -23,7 +23,7 @@ export class AppHome {
     });
 
     const view: IView = {
-      title: '',
+      title: 'Exchanges',
       match: this.match,
     };
 
@@ -35,19 +35,13 @@ export class AppHome {
       <ion-page>
         <ion-header>
           <ion-toolbar>
-            <ion-title>Home</ion-title>
+            <ion-title>Exchanges</ion-title>
           </ion-toolbar>
         </ion-header>
+
         <ion-content>
-          <img alt="Cryptobuddy Logo of stock chart" src="assets/logo.svg" />
-          <p text-center>Your trading mate for Cryptocurrency</p>
-          <div text-center>
-            <stencil-route-link url='/profile/stencil'>
-              <ion-button>
-                Enter
-              </ion-button>
-            </stencil-route-link>
-          </div>
+          <div>Tesing markup</div>
+          <p>Placeholder for Cryptocurrency Exchanges</p>
         </ion-content>
       </ion-page>
     ];

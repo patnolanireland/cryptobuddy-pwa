@@ -71,7 +71,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-      
+      match?: MatchResults;
     }
   }
 }
@@ -131,7 +131,37 @@ declare global {
   }
   namespace JSXElements {
     export interface CryptobuddyAppAttributes extends HTMLAttributes {
-      activeMenuTitle?: string;
+      
+    }
+  }
+}
+
+
+import {
+  Exchanges as ExchangesView
+} from './components/exchanges/exchanges';
+
+declare global {
+  interface HTMLExchangesViewElement extends ExchangesView, HTMLStencilElement {
+  }
+  var HTMLExchangesViewElement: {
+    prototype: HTMLExchangesViewElement;
+    new (): HTMLExchangesViewElement;
+  };
+  interface HTMLElementTagNameMap {
+    "exchanges-view": HTMLExchangesViewElement;
+  }
+  interface ElementTagNameMap {
+    "exchanges-view": HTMLExchangesViewElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "exchanges-view": JSXElements.ExchangesViewAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExchangesViewAttributes extends HTMLAttributes {
+      match?: MatchResults;
     }
   }
 }
