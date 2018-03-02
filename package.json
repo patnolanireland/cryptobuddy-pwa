@@ -7,9 +7,12 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build --prerender",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "build": "npm run env -- --prod && stencil build --prerender",
+    "deploy": "npm run build && node scripts/deploy.js",
+    "dev": "sd concurrent \"npm run env --dev && stencil build --dev --watch\" \"stencil-dev-server\" ",
     "devWithSW": "sd concurrent \"stencil build --dev --service-worker --watch\" \"stencil-dev-server\" ",
+    "env": "node scripts/setup-env.js",
+    "postinstall": "npm run env --dev",
     "serve": "stencil-dev-server",
     "start": "npm run dev",
     "test": "jest --no-cache",

@@ -1,5 +1,6 @@
 import { Component } from '@stencil/core';
 
+import config from '../../config/active-config.json';
 
 @Component({
   tag: 'app-home',
@@ -29,6 +30,7 @@ export class AppHome {
               Profile page
             </ion-button>
           </stencil-route-link>
+          <p>The API for Cryptobuddy is accessible at { config.ApiEndpoints.cryptobuddy }</p>
         </ion-content>
       </ion-page>
     );

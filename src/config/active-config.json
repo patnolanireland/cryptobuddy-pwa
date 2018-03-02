@@ -1,0 +1,5 @@
+{
+  "ApiEndpoints": {
+    "cryptobuddy": "https://cryptobuddy-api.herokuapp.com"
+  }
+}

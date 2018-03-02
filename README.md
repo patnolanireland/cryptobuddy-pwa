@@ -107,8 +107,14 @@ heroku open -a cryptobuddy-pwa
 
 ### Subsequent Build and Update Process
 
-Once the app has been created and deployed for the first time develop some more and when comfortable to push observe the
-following three step process.
+Once the app has been created and deployed for the first time develop some more and when comfortable to push observe the 
+quickest and easiest way to do this is to use the command.
+
+```
+yarn deploy
+```
+
+This command essentially wraps up the following three step process.
 
 ```
 docker build -f Dockerfile.alpine -t cryptobuddy-pwa .

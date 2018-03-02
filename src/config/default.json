@@ -1,0 +1,5 @@
+{
+  "ApiEndpoints": {
+    "cryptobuddy": "http://localhost:9000"
+  }
+}
