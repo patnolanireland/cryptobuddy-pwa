@@ -1,0 +1,16 @@
+exchange-item {
+  h2 {
+    flex-grow: 1;
+  }
+  .logo {
+    margin: 15px auto;
+    max-width: 350px;
+    width: 60%;
+  }
+  .links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 15px 0;
+  }
+}

@@ -7,6 +7,9 @@
 import {
   MatchResults,
 } from '@stencil/router';
+import {
+  IExchange,
+} from './model';
 
 declare global {
   interface HTMLStencilElement extends HTMLElement {
@@ -138,29 +141,59 @@ declare global {
 
 
 import {
-  Exchanges as ExchangesView
-} from './components/exchanges/exchanges';
+  ExchangeItem as ExchangeItem
+} from './components/exchange-item/exchange-item';
 
 declare global {
-  interface HTMLExchangesViewElement extends ExchangesView, HTMLStencilElement {
+  interface HTMLExchangeItemElement extends ExchangeItem, HTMLStencilElement {
   }
-  var HTMLExchangesViewElement: {
-    prototype: HTMLExchangesViewElement;
-    new (): HTMLExchangesViewElement;
+  var HTMLExchangeItemElement: {
+    prototype: HTMLExchangeItemElement;
+    new (): HTMLExchangeItemElement;
   };
   interface HTMLElementTagNameMap {
-    "exchanges-view": HTMLExchangesViewElement;
+    "exchange-item": HTMLExchangeItemElement;
   }
   interface ElementTagNameMap {
-    "exchanges-view": HTMLExchangesViewElement;
+    "exchange-item": HTMLExchangeItemElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "exchanges-view": JSXElements.ExchangesViewAttributes;
+      "exchange-item": JSXElements.ExchangeItemAttributes;
     }
   }
   namespace JSXElements {
-    export interface ExchangesViewAttributes extends HTMLAttributes {
+    export interface ExchangeItemAttributes extends HTMLAttributes {
+      exchange?: IExchange;
+    }
+  }
+}
+
+
+import {
+  ExchangesView as ExchangesList
+} from './components/exchanges-list/exchanges-list';
+
+declare global {
+  interface HTMLExchangesListElement extends ExchangesList, HTMLStencilElement {
+  }
+  var HTMLExchangesListElement: {
+    prototype: HTMLExchangesListElement;
+    new (): HTMLExchangesListElement;
+  };
+  interface HTMLElementTagNameMap {
+    "exchanges-list": HTMLExchangesListElement;
+  }
+  interface ElementTagNameMap {
+    "exchanges-list": HTMLExchangesListElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "exchanges-list": JSXElements.ExchangesListAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExchangesListAttributes extends HTMLAttributes {
       match?: MatchResults;
     }
   }

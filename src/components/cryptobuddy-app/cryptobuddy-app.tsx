@@ -139,7 +139,7 @@ export class CryptobuddyApp {
             <stencil-route url='/profile/:name' component='app-profile'>
             </stencil-route>
 
-            <stencil-route url='/exchanges' component='exchanges-view' exact={true}>
+            <stencil-route url='/exchanges' component='exchanges-list' exact={true}>
             </stencil-route>
           </stencil-router>
         </ion-page>
