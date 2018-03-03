@@ -1,16 +1,16 @@
 import { render } from '@stencil/core/testing';
-import { Exchanges } from './exchanges';
+import { ExchangesView } from './exchanges-list';
 
 describe('exchanges', () => {
   it('should build', () => {
-    expect(new Exchanges()).toBeTruthy();
+    expect(new ExchangesView()).toBeTruthy();
   });
 
   describe('rendering', () => {
     beforeEach(async () => {
       await render({
-        components: [Exchanges],
-        html: '<exchanges></exchanges>'
+        components: [ExchangesView],
+        html: '<exchanges-list></exchanges-list>'
       });
     });
   });
