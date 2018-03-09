@@ -30,7 +30,18 @@ export class AppHome {
               Profile page
             </ion-button>
           </stencil-route-link>
-          <p>The API for Cryptobuddy is accessible at { config.ApiEndpoints.cryptobuddy }</p>
+          <stencil-route-link url='/test'>
+            <ion-button>
+              Test page
+            </ion-button>
+          </stencil-route-link>
+          <stencil-route-link url='/exchanges'>
+            <ion-button>
+              Exchanges
+            </ion-button>
+          </stencil-route-link>
+
+          <p>The API for Cryptobuddy is accessible at {config.ApiEndpoints.cryptobuddy}</p>
         </ion-content>
       </ion-page>
     );

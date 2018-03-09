@@ -1,0 +1,1 @@
+export { IAction } from './action';

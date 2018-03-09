@@ -3,19 +3,32 @@
  * It contains typing information for all components that exist in this project
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
-
-import {
-  MatchResults,
-} from '@stencil/router';
-
 declare global {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
   interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
     componentOnReady(done: (ele?: this) => void): void;
   }
+
+  interface HTMLAttributes {}
 }
 
+import '@stencil/router';
+import 'ionicons';
+import '@ionic/core';
+import '@stencil/redux';
 
+import {
+  MatchResults,
+} from '@stencil/router';
+import {
+  IExchange,
+} from './model';
 
 import {
   AppHome as AppHome
@@ -71,6 +84,96 @@ declare global {
   }
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
+      match?: MatchResults;
+    }
+  }
+}
+
+
+import {
+  AppTest as AppTest
+} from './components/app-test/app-test';
+
+declare global {
+  interface HTMLAppTestElement extends AppTest, HTMLStencilElement {
+  }
+  var HTMLAppTestElement: {
+    prototype: HTMLAppTestElement;
+    new (): HTMLAppTestElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-test": HTMLAppTestElement;
+  }
+  interface ElementTagNameMap {
+    "app-test": HTMLAppTestElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-test": JSXElements.AppTestAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppTestAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  ExchangeItem as ExchangeItem
+} from './components/exchange-item/exchange-item';
+
+declare global {
+  interface HTMLExchangeItemElement extends ExchangeItem, HTMLStencilElement {
+  }
+  var HTMLExchangeItemElement: {
+    prototype: HTMLExchangeItemElement;
+    new (): HTMLExchangeItemElement;
+  };
+  interface HTMLElementTagNameMap {
+    "exchange-item": HTMLExchangeItemElement;
+  }
+  interface ElementTagNameMap {
+    "exchange-item": HTMLExchangeItemElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "exchange-item": JSXElements.ExchangeItemAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExchangeItemAttributes extends HTMLAttributes {
+      exchange?: IExchange;
+    }
+  }
+}
+
+
+import {
+  ExchangesList as ExchangesList
+} from './components/exchanges-list/exchanges-list';
+
+declare global {
+  interface HTMLExchangesListElement extends ExchangesList, HTMLStencilElement {
+  }
+  var HTMLExchangesListElement: {
+    prototype: HTMLExchangesListElement;
+    new (): HTMLExchangesListElement;
+  };
+  interface HTMLElementTagNameMap {
+    "exchanges-list": HTMLExchangesListElement;
+  }
+  interface ElementTagNameMap {
+    "exchanges-list": HTMLExchangesListElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "exchanges-list": JSXElements.ExchangesListAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExchangesListAttributes extends HTMLAttributes {
       match?: MatchResults;
     }
   }

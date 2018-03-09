@@ -42,12 +42,16 @@ export class AppProfile {
     // get our service worker registration
     navigator.serviceWorker.getRegistration().then((reg: ServiceWorkerRegistration) => {
 
+      if(!reg) {
+        console.log('serverWorker exists but registration is undefined');
+        return;
+      }
       // get push subscription
       reg.pushManager.getSubscription().then((sub: PushSubscription) => {
 
         // if there is no subscription that means
         // the user has not subscribed before
-        if (sub === null) {
+        if (reg.pushManager && sub === null) {
           // user is not subscribed
           reg.pushManager.subscribe({
             userVisibleOnly: true,

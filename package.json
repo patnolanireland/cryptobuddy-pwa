@@ -19,13 +19,18 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@ionic/core": "0.0.2-65",
-    "@stencil/core": "0.6.1",
-    "@stencil/router": "latest"
+    "@ionic/core": "0.1.1",
+    "@stencil/core": "0.6.16",
+    "@stencil/redux": "^0.0.4",
+    "@stencil/router": "latest",
+    "ionicons": "^4.0.0-18",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.2",
+    "@stencil/sass": "0.0.3",
     "@stencil/utils": "latest",
     "@types/jest": "^21.1.1",
     "jest": "^21.2.1"
