@@ -65,7 +65,7 @@ export class MyApp {
 
           </stencil-router>
           <ion-loading-controller></ion-loading-controller>
-          <ion-loading></ion-loading>
+          <ion-loading cssClass='app-hidden'></ion-loading>
           <ion-animation-controller></ion-animation-controller>
           <ion-gesture-controller></ion-gesture-controller>
         </ion-page>

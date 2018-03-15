@@ -39,6 +39,12 @@ export class AppTest {
   render() {
     return (
       <ion-page>
+        <ion-header>
+          <ion-toolbar color='primary'>
+            <ion-title>Test Page</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
         <ion-content>
           <p>This is the ct</p>
         </ion-content>
