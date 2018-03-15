@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@ionic/core@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-0.1.1.tgz#86e0822c708657a75132493530541d3bea277bde"
+"@ionic/core@0.1.4-5":
+  version "0.1.4-5"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-0.1.4-5.tgz#857b451ef734f34ec5f249d48ea0041acc79a7e5"
   dependencies:
     ionicons "4.0.0-18"
 
@@ -14,9 +14,9 @@
   dependencies:
     netmask "^1.0.6"
 
-"@stencil/core@0.6.16":
-  version "0.6.16"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.6.16.tgz#4ee4893e6c516476b3d121929f91a30800ca3c0c"
+"@stencil/core@0.6.18":
+  version "0.6.18"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.6.18.tgz#4a8f619fbb994c43e4eb5e19cec43db6e111b3b6"
   dependencies:
     chokidar "2.0.1"
     jsdom "11.5.1"
