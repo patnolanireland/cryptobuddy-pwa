@@ -24,4 +24,4 @@ EXPOSE 3000
 ENTRYPOINT ["/sbin/tini", "--" ]
 
 # Using shell form of CMD to allow port to be read by the shell
-CMD /home/node/.npm-global/bin/http-server -p $PORT
+CMD /home/node/.npm-global/bin/http-server -p $PORT -c0

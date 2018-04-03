@@ -10,7 +10,7 @@ describe('cryptobuddy-app', () => {
     beforeEach(async () => {
       await render({
         components: [CryptobuddyApp],
-        html: '<cryptobuddy-app></crypobuddy-app>'
+        html: '<cryptobuddy-app></cryptobuddy-app>'
       });
     });
   });

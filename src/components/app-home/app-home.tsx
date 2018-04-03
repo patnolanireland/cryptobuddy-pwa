@@ -1,9 +1,6 @@
-import { Component, Prop } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
-import { Action, Store } from '@stencil/redux';
+import { Component } from '@stencil/core';
 
-import { IView } from '../../model';
-import { activateView } from '../../actions/view';
+import config from '../../config/active-config.json';
 
 @Component({
   tag: 'app-home',
@@ -11,45 +8,37 @@ import { activateView } from '../../actions/view';
 })
 export class AppHome {
 
-  @Prop({ context: 'store' }) store: Store;
-
-  @Prop() match: MatchResults;
-
-  private activateView: Action;
-
-  componentWillLoad() {
-    this.store.mapDispatchToProps(this, {
-      activateView,
-    });
-
-    const view: IView = {
-      title: '',
-      match: this.match,
-    };
-
-    this.activateView(view);
-  }
-
   render() {
-    return [
+    return (
       <ion-page>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Home</ion-title>
-          </ion-toolbar>
-        </ion-header>
+        <app-header-toolbar title='Ionic PWA Toolkit'></app-header-toolbar>
         <ion-content>
-          <img alt="Cryptobuddy Logo of stock chart" src="assets/logo.svg" />
-          <p text-center>Your trading mate for Cryptocurrency</p>
-          <div text-center>
-            <stencil-route-link url='/profile/stencil'>
-              <ion-button>
-                Enter
-              </ion-button>
-            </stencil-route-link>
-          </div>
+          <p>
+            Welcome to the Ionic PWA Toolkit.
+            You can use this starter to build entire PWAs all with
+            web components using Stencil and ionic/core! Check out the readme for everything that comes in this starter out of the box and
+            Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
+          </p>
+
+          <stencil-route-link url='/profile/stencil'>
+            <ion-button>
+              Profile page
+            </ion-button>
+          </stencil-route-link>
+          <stencil-route-link url='/test'>
+            <ion-button>
+              Test page
+            </ion-button>
+          </stencil-route-link>
+          <stencil-route-link url='/exchanges'>
+            <ion-button>
+              Exchanges
+            </ion-button>
+          </stencil-route-link>
+
+          <p>The API for Cryptobuddy is accessible at {config.ApiEndpoints.cryptobuddy}</p>
         </ion-content>
       </ion-page>
-    ];
+    );
   }
 }

@@ -1,14 +1,10 @@
 import '@ionic/core';
 import '@stencil/core';
-import { Component, Prop, Listen, State } from '@stencil/core';
+import { Component, Prop, Listen } from '@stencil/core';
 import { ToastController } from '@ionic/core';
-import { Action, Store } from '@stencil/redux';
+import { Store } from '@stencil/redux';
 
 import { configureStore } from '../../store';
-import { StateSlice } from '../../store/state-slice';
-import { IStoreState, IView } from '../../model';
-import { activateView } from '../../actions/view';
-
 
 @Component({
   tag: 'cryptobuddy-app',
@@ -20,30 +16,8 @@ export class CryptobuddyApp {
 
   @Prop({ context: 'store' }) store: Store;
 
-  @State() activeView: StateSlice<IView>;
-
-  activateView: Action;
-
-  private menu: HTMLIonMenuControllerElement;
-
-  openMainMenu() {
-    this.menu.open('left');
-  }
-
   componentWillLoad() {
     this.store.setStore(configureStore());
-
-    this.store.mapStateToProps(this, (state: IStoreState) => {
-      const {
-        activeView,
-      } = state;
-
-      return { activeView };
-    });
-
-    this.store.mapDispatchToProps(this, {
-      activateView,
-    });
   }
 
   componentDidLoad() {
@@ -64,9 +38,7 @@ export class CryptobuddyApp {
       }).then((toast) => {
         toast.present();
       });
-    });
-
-    this.menu = document.querySelector('ion-menu-controller');
+    })
   }
 
   @Listen('body:ionToastWillDismiss')
@@ -75,11 +47,8 @@ export class CryptobuddyApp {
   }
 
   render() {
-    const { entity: { title } = { title: '' } } = this.activeView;
-    console.log('render app', this.activeView);
-    return (
+    return [
       <ion-app>
-        <app-header title={title} />
         <ion-menu side="left">
           <ion-header>
             <ion-toolbar color="primary">
@@ -129,9 +98,7 @@ export class CryptobuddyApp {
             </ion-toolbar>
           </ion-footer>
         </ion-menu>
-
         <ion-page main>
-
           <stencil-router>
             <stencil-route url='/' component='app-home' exact={true}>
             </stencil-route>
@@ -139,12 +106,20 @@ export class CryptobuddyApp {
             <stencil-route url='/profile/:name' component='app-profile'>
             </stencil-route>
 
+            <stencil-route url='/test' component='app-test' exact={true}>
+            </stencil-route>
+
             <stencil-route url='/exchanges' component='exchanges-list' exact={true}>
             </stencil-route>
-          </stencil-router>
-        </ion-page>
 
-      </ion-app>
-    );
+          </stencil-router>
+          <ion-loading-controller></ion-loading-controller>
+          <ion-loading cssClass='app-hidden'></ion-loading>
+          <ion-animation-controller></ion-animation-controller>
+          <ion-gesture-controller></ion-gesture-controller>
+        </ion-page>
+      </ion-app>,
+      <ion-menu-controller></ion-menu-controller>
+    ];
   }
 }

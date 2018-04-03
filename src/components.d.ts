@@ -3,21 +3,66 @@
  * It contains typing information for all components that exist in this project
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
+declare global {
+  namespace JSX {
+    interface Element {}
+    export interface IntrinsicElements {}
+  }
+  namespace JSXElements {}
+
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+
+    forceUpdate(): void;
+  }
+
+  interface HTMLAttributes {}
+}
+
+import '@stencil/router';
+import 'ionicons';
+import '@ionic/core';
+import '@stencil/redux';
 
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 import {
   IExchange,
 } from './model';
 
+import {
+  AppHeaderToolbar as AppHeaderToolbar
+} from './components/app-header-toolbar/app-header-toolbar';
+
 declare global {
-  interface HTMLStencilElement extends HTMLElement {
-    componentOnReady(): Promise<this>;
-    componentOnReady(done: (ele?: this) => void): void;
+  interface HTMLAppHeaderToolbarElement extends AppHeaderToolbar, HTMLStencilElement {
+  }
+  var HTMLAppHeaderToolbarElement: {
+    prototype: HTMLAppHeaderToolbarElement;
+    new (): HTMLAppHeaderToolbarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-header-toolbar": HTMLAppHeaderToolbarElement;
+  }
+  interface ElementTagNameMap {
+    "app-header-toolbar": HTMLAppHeaderToolbarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-header-toolbar": JSXElements.AppHeaderToolbarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppHeaderToolbarAttributes extends HTMLAttributes {
+      buttons?: JSX.Element[];
+      history?: RouterHistory;
+      title?: string;
+    }
   }
 }
-
 
 
 import {
@@ -74,7 +119,37 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-      match?: MatchResults;
+      
+    }
+  }
+}
+
+
+import {
+  AppMainMenuButton as AppMainMenuButton
+} from './components/app-main-menu-button/app-main-menu-button';
+
+declare global {
+  interface HTMLAppMainMenuButtonElement extends AppMainMenuButton, HTMLStencilElement {
+  }
+  var HTMLAppMainMenuButtonElement: {
+    prototype: HTMLAppMainMenuButtonElement;
+    new (): HTMLAppMainMenuButtonElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-main-menu-button": HTMLAppMainMenuButtonElement;
+  }
+  interface ElementTagNameMap {
+    "app-main-menu-button": HTMLAppMainMenuButtonElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-main-menu-button": JSXElements.AppMainMenuButtonAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppMainMenuButtonAttributes extends HTMLAttributes {
+      
     }
   }
 }
@@ -104,7 +179,38 @@ declare global {
   }
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
+    }
+  }
+}
+
+
+import {
+  AppTest as AppTest
+} from './components/app-test/app-test';
+
+declare global {
+  interface HTMLAppTestElement extends AppTest, HTMLStencilElement {
+  }
+  var HTMLAppTestElement: {
+    prototype: HTMLAppTestElement;
+    new (): HTMLAppTestElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-test": HTMLAppTestElement;
+  }
+  interface ElementTagNameMap {
+    "app-test": HTMLAppTestElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-test": JSXElements.AppTestAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppTestAttributes extends HTMLAttributes {
+      
     }
   }
 }
@@ -171,7 +277,7 @@ declare global {
 
 
 import {
-  ExchangesView as ExchangesList
+  ExchangesList as ExchangesList
 } from './components/exchanges-list/exchanges-list';
 
 declare global {
@@ -194,6 +300,7 @@ declare global {
   }
   namespace JSXElements {
     export interface ExchangesListAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
     }
   }

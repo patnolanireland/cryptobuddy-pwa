@@ -4,3 +4,26 @@ body {
   padding: 0px;
   font-family: sans-serif;
 }
+
+cryptobuddy-app {
+  display: block;
+  height: 100%;
+}
+
+ion-app {
+  justify-content: flex-start;
+}
+
+ion-page,
+stencil-router {
+  display: block;
+  height: 100%;
+}
+
+ion-content {
+  height: 100%;
+}
+
+.app-hidden {
+  display: none;
+}

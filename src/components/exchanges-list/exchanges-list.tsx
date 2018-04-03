@@ -1,10 +1,9 @@
 import { Component, Prop, State } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import { MatchResults, RouterHistory } from '@stencil/router';
 import { Action, Store } from '@stencil/redux';
 import { LoadingController } from '@ionic/core';
 
-import { IStoreState, IView } from '../../model';
-import { activateView } from '../../actions/view';
+import { IStoreState } from '../../model';
 import { loadExchanges } from '../../actions/exchange';
 import { IExchange } from '../../model';
 import { StateSliceCollection } from '../../store';
@@ -13,7 +12,7 @@ import { StateSliceCollection } from '../../store';
   tag: 'exchanges-list',
   styleUrl: 'exchanges-list.scss'
 })
-export class ExchangesView {
+export class ExchangesList {
 
   @Prop({ context: 'store' }) store: Store;
 
@@ -21,9 +20,11 @@ export class ExchangesView {
 
   @Prop({ connect: 'ion-loading-controller' }) loadingCtrl: LoadingController;
 
+  @Prop({ context: 'isServer' }) private isServer: boolean;
+
   @State() exchanges: StateSliceCollection<IExchange>;
 
-  private activateView: Action;
+  @Prop() history: RouterHistory;
 
   private loadExchanges: Action;
 
@@ -40,17 +41,12 @@ export class ExchangesView {
     });
 
     this.store.mapDispatchToProps(this, {
-      activateView,
       loadExchanges,
     });
 
-    const view: IView = {
-      title: 'Exchanges',
-      match: this.match,
-    };
-
-    console.log('componentWillLoad - exchanges', this.exchanges);
-    this.activateView(view);
+    if (this.isServer) {
+      return;
+    }
 
     this.loadingModal = await this.loadingCtrl.create({
       content: `Loading exchanges please wait ...`
@@ -58,19 +54,23 @@ export class ExchangesView {
   }
 
   componentDidLoad() {
-    this.loadExchanges();
+    if (!this.isServer) {
+      this.loadExchanges();
+    }
   }
 
-  showOrHideSpinner() {
+  async showOrHideSpinner() {
     if (this.exchanges.loading) {
-      this.loadingModal.present();
+      await this.loadingModal.present();
     } else {
-      this.loadingModal.dismiss();
+      await this.loadingModal.dismiss();
     }
 
   }
 
   componentDidUpdate() {
+    if (this.isServer) return;
+
     this.showOrHideSpinner();
   }
 
@@ -95,14 +95,11 @@ export class ExchangesView {
   render() {
     return [
       <ion-page>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Exchanges</ion-title>
-          </ion-toolbar>
-        </ion-header>
+        <app-header-toolbar history={ this.history } title='Exchanges'></app-header-toolbar>
 
         <ion-content>
           {this.getExchangesMarkup()}
+          <ion-loading-controller></ion-loading-controller>
         </ion-content>
       </ion-page>
     ];

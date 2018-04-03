@@ -3,8 +3,8 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 import { rootReducer } from '../reducers/index';
-import { IStoreState } from '../model';
-import rootSaga from '../sagas';
+import { IStoreState } from '../model/store';
+import rootSaga from '../sagas/index';
 
 const initialState: IStoreState = {
   activeView: {
