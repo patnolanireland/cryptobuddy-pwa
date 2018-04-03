@@ -23,7 +23,17 @@ leverages [Stencil](https://stenciljs.com/) and an early release of Ionic (4.x+)
 
 ## Getting Started
 
-It's very simple to get developing just do:
+1. Clone the [api project](https://github.com/patnolanireland/cryptobuddy-api).
+2. Clone this repo at the same level
+3. Create a symbolic link to the `src/model` directory of the api project in `src/model` as api so as to share the
+   server models e.g.
+
+```
+  cd src/model
+  ln -s ../../../cryptobuddy-api/src/model api  
+```
+
+Now it's all set to start developing just do:
 
 ```bash
 yarn 
