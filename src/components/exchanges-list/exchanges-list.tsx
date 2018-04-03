@@ -1,5 +1,5 @@
 import { Component, Prop, State } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import { MatchResults, RouterHistory } from '@stencil/router';
 import { Action, Store } from '@stencil/redux';
 import { LoadingController } from '@ionic/core';
 
@@ -23,6 +23,8 @@ export class ExchangesList {
   @Prop({ context: 'isServer' }) private isServer: boolean;
 
   @State() exchanges: StateSliceCollection<IExchange>;
+
+  @Prop() history: RouterHistory;
 
   private loadExchanges: Action;
 
@@ -93,11 +95,7 @@ export class ExchangesList {
   render() {
     return [
       <ion-page>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Exchanges</ion-title>
-          </ion-toolbar>
-        </ion-header>
+        <app-header-toolbar history={ this.history } title='Exchanges'></app-header-toolbar>
 
         <ion-content>
           {this.getExchangesMarkup()}

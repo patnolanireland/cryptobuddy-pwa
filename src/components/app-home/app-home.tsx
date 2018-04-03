@@ -11,12 +11,7 @@ export class AppHome {
   render() {
     return (
       <ion-page>
-        <ion-header>
-          <ion-toolbar color='primary'>
-            <ion-title>Ionic PWA Toolkit</ion-title>
-          </ion-toolbar>
-        </ion-header>
-
+        <app-header-toolbar title='Ionic PWA Toolkit'></app-header-toolbar>
         <ion-content>
           <p>
             Welcome to the Ionic PWA Toolkit.

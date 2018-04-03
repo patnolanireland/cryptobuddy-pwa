@@ -13,6 +13,8 @@ declare global {
   interface HTMLStencilElement extends HTMLElement {
     componentOnReady(): Promise<this>;
     componentOnReady(done: (ele?: this) => void): void;
+
+    forceUpdate(): void;
   }
 
   interface HTMLAttributes {}
@@ -25,10 +27,43 @@ import '@stencil/redux';
 
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 import {
   IExchange,
 } from './model';
+
+import {
+  AppHeaderToolbar as AppHeaderToolbar
+} from './components/app-header-toolbar/app-header-toolbar';
+
+declare global {
+  interface HTMLAppHeaderToolbarElement extends AppHeaderToolbar, HTMLStencilElement {
+  }
+  var HTMLAppHeaderToolbarElement: {
+    prototype: HTMLAppHeaderToolbarElement;
+    new (): HTMLAppHeaderToolbarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-header-toolbar": HTMLAppHeaderToolbarElement;
+  }
+  interface ElementTagNameMap {
+    "app-header-toolbar": HTMLAppHeaderToolbarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-header-toolbar": JSXElements.AppHeaderToolbarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppHeaderToolbarAttributes extends HTMLAttributes {
+      buttons?: JSX.Element[];
+      history?: RouterHistory;
+      title?: string;
+    }
+  }
+}
+
 
 import {
   AppHome as AppHome
@@ -61,6 +96,36 @@ declare global {
 
 
 import {
+  AppMainMenuButton as AppMainMenuButton
+} from './components/app-main-menu-button/app-main-menu-button';
+
+declare global {
+  interface HTMLAppMainMenuButtonElement extends AppMainMenuButton, HTMLStencilElement {
+  }
+  var HTMLAppMainMenuButtonElement: {
+    prototype: HTMLAppMainMenuButtonElement;
+    new (): HTMLAppMainMenuButtonElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-main-menu-button": HTMLAppMainMenuButtonElement;
+  }
+  interface ElementTagNameMap {
+    "app-main-menu-button": HTMLAppMainMenuButtonElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-main-menu-button": JSXElements.AppMainMenuButtonAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppMainMenuButtonAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
   AppProfile as AppProfile
 } from './components/app-profile/app-profile';
 
@@ -84,6 +149,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppProfileAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
     }
   }
@@ -114,6 +180,36 @@ declare global {
   }
   namespace JSXElements {
     export interface AppTestAttributes extends HTMLAttributes {
+      
+    }
+  }
+}
+
+
+import {
+  CryptobuddyApp as CryptobuddyApp
+} from './components/cryptobuddy-app/cryptobuddy-app';
+
+declare global {
+  interface HTMLCryptobuddyAppElement extends CryptobuddyApp, HTMLStencilElement {
+  }
+  var HTMLCryptobuddyAppElement: {
+    prototype: HTMLCryptobuddyAppElement;
+    new (): HTMLCryptobuddyAppElement;
+  };
+  interface HTMLElementTagNameMap {
+    "cryptobuddy-app": HTMLCryptobuddyAppElement;
+  }
+  interface ElementTagNameMap {
+    "cryptobuddy-app": HTMLCryptobuddyAppElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "cryptobuddy-app": JSXElements.CryptobuddyAppAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface CryptobuddyAppAttributes extends HTMLAttributes {
       
     }
   }
@@ -174,6 +270,7 @@ declare global {
   }
   namespace JSXElements {
     export interface ExchangesListAttributes extends HTMLAttributes {
+      history?: RouterHistory;
       match?: MatchResults;
     }
   }
@@ -206,36 +303,6 @@ declare global {
     export interface LazyImgAttributes extends HTMLAttributes {
       alt?: string;
       src?: string;
-    }
-  }
-}
-
-
-import {
-  MyApp as MyApp
-} from './components/my-app/my-app';
-
-declare global {
-  interface HTMLMyAppElement extends MyApp, HTMLStencilElement {
-  }
-  var HTMLMyAppElement: {
-    prototype: HTMLMyAppElement;
-    new (): HTMLMyAppElement;
-  };
-  interface HTMLElementTagNameMap {
-    "my-app": HTMLMyAppElement;
-  }
-  interface ElementTagNameMap {
-    "my-app": HTMLMyAppElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      "my-app": JSXElements.MyAppAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface MyAppAttributes extends HTMLAttributes {
-      
     }
   }
 }

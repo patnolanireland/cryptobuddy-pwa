@@ -8,10 +8,13 @@ import { StateSliceCollection } from '../../store';
 
 @Component({
   tag: 'app-test',
+  styleUrl: 'app-test.scss',
 })
 export class AppTest {
 
   @Prop({ context: 'store' }) store: Store;
+
+  @Prop({ context: 'isServer' }) private isServer: boolean;
 
   @State() exchanges: StateSliceCollection<IExchange>;
 
@@ -33,7 +36,9 @@ export class AppTest {
   }
 
   componentDidLoad() {
-    this.loadExchanges();
+    if (!this.isServer) {
+      this.loadExchanges();
+    }
   }
 
   render() {

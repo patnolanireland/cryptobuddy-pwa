@@ -1,7 +1,6 @@
 import { Component, Listen, Prop, State } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import { MatchResults, RouterHistory } from '@stencil/router';
 import { ToastController } from '@ionic/core';
-
 import { urlB64ToUint8Array } from '../../helpers/utils';
 
 
@@ -16,6 +15,8 @@ export class AppProfile {
 
   @State() notify: boolean;
   @State() swSupport: boolean;
+
+  @Prop() history: RouterHistory;
 
   // demo key from https://web-push-codelab.glitch.me/
   // replace with your key in production
@@ -42,7 +43,7 @@ export class AppProfile {
     // get our service worker registration
     navigator.serviceWorker.getRegistration().then((reg: ServiceWorkerRegistration) => {
 
-      if(!reg) {
+      if (!reg) {
         console.log('serverWorker exists but registration is undefined');
         return;
       }
@@ -70,14 +71,16 @@ export class AppProfile {
   }
 
   render() {
+    const buttons = [
+      <ion-button>
+        <ion-icon name='cog'></ion-icon>
+      </ion-button>
+    ];
     if (this.match && this.match.params.name) {
       return (
         <ion-page>
-          <ion-header>
-            <ion-toolbar color='primary'>
-              <ion-title>Ionic PWA Toolkit</ion-title>
-            </ion-toolbar>
-          </ion-header>
+
+          <app-header-toolbar title='Profile' buttons={buttons} history={ this.history }></app-header-toolbar>
 
           <ion-content>
             <p>
